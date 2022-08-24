@@ -4,9 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ca0161c0-f093-484f-913f-882c5a1ceb1f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.368" />
     <PackageReference Include="MySql.Data" Version="8.0.30" />
   </ItemGroup>
 
