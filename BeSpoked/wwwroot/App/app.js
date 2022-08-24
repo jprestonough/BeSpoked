@@ -1,7 +1,9 @@
 ﻿Ext.onReady(function () {
-    Ext.create('Ext.panel.Panel', {
+    Ext.create('Ext.container.Viewport', {
         renderTo: Ext.getBody(),
-        title: 'Hello',
-        html: 'fdjsklfjdksjfdsakl'
+        layout: 'fit',
+        items: [
+            { xtype: 'App-View-Main-Container' }
+        ]
     });
 });
