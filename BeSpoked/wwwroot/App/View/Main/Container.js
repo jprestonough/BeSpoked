@@ -17,9 +17,15 @@
             ]
         },
         {
+            title: 'Salespeople',
+            items: [
+                { xtype: 'App-View-SalespersonList-Container' }
+            ]
+        },
+        {
             title: 'Customers',
             items: [
-                
+                { xtype: 'App-View-CustomerList-Container' }
             ]
         }
     ]
