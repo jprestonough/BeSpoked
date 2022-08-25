@@ -2,10 +2,7 @@
     extend: 'Ext.container.Container',
     alias: 'widget.App-View-ProductsList-Container',
 
-    layout: {
-        type: 'vbox',
-        align: 'stretch'
-    },
+    layout: 'fit',
 
     items: [
         { xtype: 'App-View-ProductsList-Grid' }

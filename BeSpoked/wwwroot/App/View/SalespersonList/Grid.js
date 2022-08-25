@@ -11,6 +11,7 @@
         },
         autoLoad: true
     },
+    scrollable: true,
     columns: {
         defaults: {
             minWidth: 150

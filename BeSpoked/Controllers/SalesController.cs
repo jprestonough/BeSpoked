@@ -7,23 +7,23 @@ namespace BeSpoked.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class SalesController : ControllerBase
     {
         private IConfiguration _configuration;
 
-        public ProductController(IConfiguration configuration)
+        public SalesController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
-        [HttpGet("GetProductsList")]
-        public List<Product> GetProductsList()
+        [HttpGet("GetSalesList")]
+        public List<Sales> GetSalesList()
         {
-            List<Product> productList = new List<Product>();
+            List<Sales> salesList = new List<Sales>();
 
             using (MySqlConnection connection = new MySqlConnection(_configuration.GetConnectionString("Sales")))
             {
-                MySqlCommand command = new MySqlCommand("GetProductsList", connection);
+                MySqlCommand command = new MySqlCommand("GetSalesList", connection);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
 
                 connection.Open();
@@ -31,21 +31,21 @@ namespace BeSpoked.Controllers
                 {
                     while (reader.Read())
                     {
-                        productList.Add(new Product
+                        salesList.Add(new Sales
                         {
-                            ProductId = reader.GetInt32("ProductId"),
+                            SalesDate = reader.GetDateTime("SalesDate"),
+                            SalespersonFullname = reader.GetString("SalespersonFullname"),
+                            CustomerFullname = reader.GetString("CustomerFullname"),
                             ProductName = reader.GetString("ProductName"),
-                            Manufacturer = reader.GetString("Manufacturer"),
-                            Style = reader.GetString("Style"),
-                            SalePrice = reader.GetDecimal("SalePrice"),
-                            QuantityNbr = reader.GetInt32("QuantityNbr"),
-                            CommissionPct = reader.GetDecimal("CommissionPct")
+                            PurchasePrice = reader.GetDecimal("PurchasePrice"),
+                            FinalPrice = reader.GetDecimal("FinalPrice"),
+                            FinalCommission = reader.GetDecimal("FinalCommission")
                         });
                     }
                 }
             }
 
-            return productList;
+            return salesList;
         }
     }
 }

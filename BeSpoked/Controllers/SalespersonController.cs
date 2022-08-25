@@ -19,7 +19,7 @@ namespace BeSpoked.Controllers
         [HttpGet("GetSalespersonList")]
         public List<Salesperson> GetSalespersonList()
         {
-            List<Salesperson> Salespersons = new List<Salesperson>();
+            List<Salesperson> salespersonList = new List<Salesperson>();
 
             using (MySqlConnection connection = new MySqlConnection(_configuration.GetConnectionString("Sales")))
             {
@@ -31,7 +31,7 @@ namespace BeSpoked.Controllers
                 {
                     while (reader.Read())
                     {
-                        Salespersons.Add(new Salesperson
+                        salespersonList.Add(new Salesperson
                         {
                             SalespersonId = reader.GetInt32("SalespersonId"),
                             FirstName = reader.GetString("FirstName"),
@@ -47,7 +47,7 @@ namespace BeSpoked.Controllers
                 }
             }
 
-            return Salespersons;
+            return salespersonList;
         }
     }
 }

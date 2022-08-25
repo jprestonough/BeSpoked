@@ -4,7 +4,16 @@
 
     title: 'BeSpoked Sales',
 
+    defaults: {
+        layout: 'fit'
+    },
     items: [
+        {
+            title: 'Sales',
+            items: [
+                { xtype: 'App-View-SalesList-Container' }
+            ]
+        },
         {
             title: 'Products',
             items: [

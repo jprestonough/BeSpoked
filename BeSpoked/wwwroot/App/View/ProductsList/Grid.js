@@ -12,6 +12,7 @@
         },
         autoLoad: true
     },
+    scrollable: true,
     columns: {
         defaults: {
             minWidth: 150
@@ -20,6 +21,7 @@
             { text: 'Name', dataIndex: 'productName' },
             { text: 'Manufacturer', dataIndex: 'manufacturer' },
             { text: 'Style', dataIndex: 'style' },
+            { text: 'Purchase Price', dataIndex: 'purchasePrice', renderer: Ext.util.Format.usMoney, align: 'right' },
             { text: 'Sales Price', dataIndex: 'salePrice', renderer: Ext.util.Format.usMoney, align: 'right' },
             { text: 'Quantity Available', dataIndex: 'quantityNbr', xtype: 'numbercolumn', format: '0', align: 'right' },
             {
