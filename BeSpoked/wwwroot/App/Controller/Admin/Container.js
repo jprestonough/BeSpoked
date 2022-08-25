@@ -28,6 +28,7 @@
                                 Ext.Msg.alert('Error', 'Error occurred');
                             }
 
+                            Ext.GlobalEvents.fireEvent('datachanged');
                             mainContainer.setLoading(false);
                         }
                     });
