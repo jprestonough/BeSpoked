@@ -19,6 +19,7 @@
         items:
             [
                 { text: 'Sales Date', dataIndex: 'salesDate', xtype: 'datecolumn' },
+                { text: 'Product Name', dataIndex: 'productName' },
                 { text: 'Salesperson Name', dataIndex: 'salespersonFullname' },
                 { text: 'Customer Name', dataIndex: 'customerFullname' },
                 { text: 'Purchase Price', dataIndex: 'purchasePrice', renderer: Ext.util.Format.usMoney, align: 'right' },
