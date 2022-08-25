@@ -32,6 +32,7 @@
                         Ext.Msg.alert('Error', 'Error occurred');
                     }
 
+                    Ext.GlobalEvents.fireEvent('datachanged');
                     win.mainContainer.setLoading(false);
                     win.close();
                 }

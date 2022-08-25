@@ -1,6 +1,7 @@
 ﻿Ext.define('App.View.Main.Container', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.App-View-Main-Container',
+    controller: 'App-Controller-Main-Container',
 
     title: 'BeSpoked Sales',
 
