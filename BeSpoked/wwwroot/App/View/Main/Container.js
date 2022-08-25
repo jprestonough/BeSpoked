@@ -15,6 +15,12 @@
             ]
         },
         {
+            title: 'Quarterly Sales Report',
+            items: [
+                { xtype: 'App-View-QuarterlySalesReport-Container' }
+            ]
+        },
+        {
             title: 'Products',
             items: [
                 { xtype: 'App-View-ProductsList-Container' }
