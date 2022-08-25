@@ -47,5 +47,23 @@ namespace BeSpoked.Controllers
 
             return salesList;
         }
+
+        [HttpPost("InsertSale")]
+        public void InsertSale(Sale sale)
+        {
+            using (MySqlConnection connection = new MySqlConnection(_configuration.GetConnectionString("Sales")))
+            {
+                MySqlCommand command = new MySqlCommand("InsertSale", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("inSalesDate", sale.SalesDate);
+                command.Parameters.AddWithValue("inSalespersonId", sale.SalespersonId);
+                command.Parameters.AddWithValue("inCustomerId", sale.CustomerId);
+                command.Parameters.AddWithValue("inProductId", sale.ProductId);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

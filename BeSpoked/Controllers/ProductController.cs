@@ -47,5 +47,32 @@ namespace BeSpoked.Controllers
 
             return productList;
         }
+
+        [HttpGet("GetProductFilter")]
+        public List<ProductFilter> GetProductFilter()
+        {
+            List<ProductFilter> productList = new List<ProductFilter>();
+
+            using (MySqlConnection connection = new MySqlConnection(_configuration.GetConnectionString("Sales")))
+            {
+                MySqlCommand command = new MySqlCommand("GetProductFilter", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        productList.Add(new ProductFilter
+                        {
+                            ProductId = reader.GetInt32("ProductId"),
+                            FilterText = reader.GetString("FilterText")
+                        });
+                    }
+                }
+            }
+
+            return productList;
+        }
     }
 }

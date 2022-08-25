@@ -27,7 +27,7 @@
             {
                 text: 'Commission %', dataIndex: 'commissionPct',
                 renderer: function (value, formatString) {
-                    return (value * 100) + '%';
+                    return Ext.util.Format.number(value * 100, '0.00') + '%';
                 },
                 align: 'right'
             }
