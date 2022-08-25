@@ -2,11 +2,6 @@
     extend: 'Ext.tab.Panel',
     alias: 'widget.App-View-Main-Container',
 
-    //layout: {
-    //    type: 'vbox',
-    //    align: 'stretch'
-    //},
-
     title: 'BeSpoked Sales',
 
     items: [
@@ -26,6 +21,12 @@
             title: 'Customers',
             items: [
                 { xtype: 'App-View-CustomerList-Container' }
+            ]
+        },
+        {
+            title: 'Admin',
+            items: [
+                { xtype: 'App-View-Admin-Container' }
             ]
         }
     ]
