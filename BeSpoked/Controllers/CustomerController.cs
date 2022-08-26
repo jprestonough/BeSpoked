@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using System.Dynamic;
 
 namespace BeSpoked.Controllers
 {
@@ -46,6 +47,36 @@ namespace BeSpoked.Controllers
             }
 
             return customerList;
+        }
+
+        [HttpPost("UpsertCustomer")]
+        public object UpsertCustomer(Customer customer)
+        {
+            dynamic ret = new ExpandoObject();
+
+            using (MySqlConnection connection = new MySqlConnection(_configuration.GetConnectionString("Sales")))
+            {
+                MySqlCommand command = new MySqlCommand("UpsertCustomer", connection);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("inCustomerId", customer.CustomerId ?? 0);
+                command.Parameters.AddWithValue("inFirstName", customer.FirstName.Trim());
+                command.Parameters.AddWithValue("inLastName", customer.LastName.Trim());
+                command.Parameters.AddWithValue("inAddress", customer.Address.Trim());
+                command.Parameters.AddWithValue("inPhoneNumber", customer.PhoneNumber.Trim());
+                command.Parameters.AddWithValue("inStartDate", customer.StartDate);
+
+                connection.Open();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    reader.Read();
+
+                    ret.ResultStatus = reader.GetBoolean("ResultStatus");
+                    ret.ResultMessage = reader.GetString("ResultMessage");
+                }
+            }
+
+            return ret;
         }
     }
 }

@@ -18,6 +18,22 @@
         },
         items:
             [
+                {
+                    xtype: 'actioncolumn',
+                    width: 50,
+                    minWidth: 50,
+                    align: 'center',
+                    items: [
+                        {
+                            iconCls: 'fa fa-pencil',
+                            tooltip: 'Edit',
+                            handler: function (table, rowIndex, colIndex) {
+                                var rec = table.getStore().getAt(rowIndex);
+                                table.grid.fireEvent('customeredit', table.grid, rec.data);
+                            }
+                        }
+                    ]
+                },
                 { text: 'First Name', dataIndex: 'firstName' },
                 { text: 'Last Name', dataIndex: 'lastName' },
                 { text: 'Address', dataIndex: 'address' },
